@@ -1,18 +1,38 @@
-import initializeAxe from './axe';
+import React, {useState} from 'react';
+import useWebSocket from './useWebSocket';
 
-initializeAxe();
+const url = 'ws://localhost:3000';
 
-const App = () => {
+export default function App() {
+  const [messages, setMessages] = useState([]);
+  const [newMessageText, setNewMessageText] = useState('');
+
+  function onMessageReceived(newMessage) {
+    setMessages([...messages, newMessage]);
+  }
+  const send = useWebSocket({url, onMessageReceived});
+
+  function handleSend(e) {
+    e.preventDefault();
+    send(newMessageText);
+    setNewMessageText('');
+  }
+
   return (
     <>
-      <header>
-        <h1>Reactup App</h1>
-      </header>
-      <main>
-        <p>Hello, world.</p>
-      </main>
+      <form onSubmit={handleSend}>
+        <input
+          type="text"
+          value={newMessageText}
+          onChange={e => setNewMessageText(e.target.value)}
+          placeholder="Enter message and press return"
+        />
+      </form>
+      <ul>
+        {messages.map((message, index) => (
+          <li key={index}>{message}</li>
+        ))}
+      </ul>
     </>
   );
-};
-
-export default App;
+}
