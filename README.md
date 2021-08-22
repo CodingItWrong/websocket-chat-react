@@ -1,45 +1,24 @@
-# My React App
+# websocket-chat-react
 
-Describe your app here.
+A simple WebSocket client using React and Create React App.
 
-## Usage
+Because some abstractions over WebSocket only work in the browser, compatibility with this tool doesn't confirm that a given WebSocket backend is standards-compliant. Consider testing in [websocket-chat-expo](https://github.com/CodingItWrong/websocket-chat-expo) as well.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Requirements
 
-Dependencies are locked with `yarn.lock`; please use `yarn` rather than `npm` for installing.
+- [Yarn](https://yarnpkg.com/en/docs/install)
+- A [websocket-chat backend](https://github.com/CodingItWrong?tab=repositories&q=websocket-chat&type=&language=&sort=)
 
-## Run
+## Installation
 
+```bash
+$ yarn install
 ```
+
+## Running
+
+```bash
 $ yarn start
 ```
 
-## Test
-
-### Unit Tests
-
-```
-$ yarn test
-```
-
-### E2E Tests
-
-Run the dev server in another terminal, then run:
-
-```
-$ yarn cypress
-```
-
-## Building
-
-```
-$ yarn build
-```
-
-## Bundle Analysis
-
-```
-$ yarn analyze
-```
-
-Builds the app and launches [`source-map-explorer`](https://github.com/danvk/source-map-explorer) to visualize how the app is split into bundles and what contributes to their size.
+Then visit `http://localhost:3001`
